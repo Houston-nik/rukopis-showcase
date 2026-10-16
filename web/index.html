@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Рукописный конспект</title>
+  <style>
+    body { font-family: "Segoe UI", sans-serif; margin: 0; background: #f4f7fb; color: #1c2430; }
+    main { max-width: 880px; margin: 0 auto; padding: 24px 16px 48px; }
+    h1 { font-size: 32px; margin-bottom: 8px; }
+    p, li { font-size: 18px; line-height: 1.45; }
+    section { background: white; border-radius: 16px; padding: 18px 18px 8px; margin: 16px 0; box-shadow: 0 1px 4px rgba(0,0,0,.06); }
+    button, .link-btn { font-size: 18px; padding: 10px 16px; border-radius: 10px; border: 0; background: #1a3c8f; color: white; cursor: pointer; text-decoration: none; display: inline-block; margin: 6px 6px 6px 0; }
+    button.secondary { background: #4d628a; }
+    .status { min-height: 1.4em; font-size: 18px; }
+    .grid { display: flex; flex-wrap: wrap; gap: 10px; }
+    .cell { width: 92px; text-align: center; font-size: 14px; }
+    .cell img { width: 72px; height: 72px; object-fit: contain; background: #fff; border: 1px solid #d5dbe6; }
+    .empty { color: #9a3b3b; }
+    label { display: block; margin: 8px 0; font-size: 18px; }
+    textarea { width: 100%; min-height: 140px; font-size: 16px; }
+    a.page { display: block; margin: 8px 0; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Рукописный конспект</h1>
+    <p>Программа работает только на этом компьютере. Фото почерка никуда не отправляются.</p>
+
+    <section>
+      <h2>1. Скачай прописи и заполни своей рукой</h2>
+      <p>Распечатай листы. В каждой клетке серым написано, что писать. Чёрные квадраты по углам не закрашивай.</p>
+      <a class="link-btn" href="/propisi.pdf">Скачать прописи PDF</a>
+    </section>
+
+    <section>
+      <h2>2. Загрузи фото этих листов</h2>
+      <p>Сними лист целиком, чтобы все четыре угла были в кадре. Можно выбрать сразу несколько фото.</p>
+      <form id="samples">
+        <input type="file" name="photo" accept=".png,.jpg,.jpeg,.webp" multiple required>
+        <button type="submit">Собрать азбуку</button>
+      </form>
+      <p class="status" id="sample-status"></p>
+      <div class="grid" id="atlas"></div>
+    </section>
+
+    <section>
+      <h2>3. Отдай текст конспекта</h2>
+      <form id="render">
+        <label><input type="radio" name="mode" value="ready" checked> Текст уже готовый конспект</label>
+        <label><input type="radio" name="mode" value="short"> Чуть ужать: оставить заголовки, короткие строки и формулы</label>
+        <textarea name="text" placeholder="Вставь текст сюда. Строка графика пишется так: график: y = log2(x) от 0.1 до 8"></textarea>
+        <label>Или выбери файл txt, md, pdf, docx</label>
+        <input type="file" name="material" accept=".txt,.md,.pdf,.docx">
+        <button type="submit">Сделать страницы</button>
+      </form>
+      <p class="status" id="render-status"></p>
+      <div id="result"></div>
+    </section>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>

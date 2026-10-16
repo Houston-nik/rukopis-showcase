@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+samples/*
+!samples/.gitkeep
+output/*
+!output/.gitkeep
+atlas/*
+!atlas/.gitkeep
+logs/*
+!logs/.gitkeep
